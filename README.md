@@ -5,6 +5,11 @@ This sample illustrates how to send smtp emails using a simple Servlet-based Jav
 
 The form on the index.jsp submits the values to a MailServlet, which uses a MailUtility class to actually attempt to send the email. If you configure the environment variables with valid email provider information, then you can invoke the MailServlet without parameters and it will use defaults. Note in this case, you should change the hard-coded values in the To, From, Subject, Body inside of the MailUtility.sendMailWithEnvValues() method.
 
+
+Building the Application
+-----------------------
+mvn install
+
 Running the Application
 -----------------------
 
@@ -12,6 +17,7 @@ To run the application, make sure you have [VMC](http://docs.cloudfoundry.com/to
 installed and that you are logged in successfully for your desired target environment (e.g. http://api.cloudfoundry.com).
 Then, *cd* into the directory of this README.md file and make sure the manifest.yml values look correct and then execute:
 
+```
 vmc push --path target/mail-java-1.0.war 
 Using manifest file manifest.yml
 
@@ -30,6 +36,7 @@ mail-java: running
   platform: java_web on java7
   usage: 128M × 1 instance
   urls: mail-3ef46.cloudfoundry.com
+```
 
 Your url will likely be different if you are using the ${random-word} functionality in the manifest.yml file. Invoking that URL should display the index.jsp.
 
