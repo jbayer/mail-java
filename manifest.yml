@@ -1,0 +1,14 @@
+---
+applications:
+  .:
+    name: mail-java
+    framework: java_web
+    runtime: java7
+    memory: 128M
+    instances: 1
+    url: mail-${random-word}.${target-base}
+    env:
+        SMTP_HOST: smtp.sendgrid.net
+        SMTP_PORT: 465
+        SMTP_AUTH_USER: username
+        SMTP_AUTH_PWD: password
