@@ -41,15 +41,18 @@ mail-java: running
 Your url will likely be different if you are using the ${random-word} functionality in the manifest.yml file. Invoking that URL should display the index.jsp.
 
 For SendGrid, you should be able to use values like:
+```
 smtp host: smtp.sendgrid.net
 smtp port: 465
 user: SENDGRID_USER
 password: SENDGRID_PASSWORD
+```
 
 For MailGun, you should be able to use values from your ["Domains"](https://mailgun.net/cp/domains "Domains") page.
+```
 smtp host: smtp.mailgun.org
 smtp port: 465
 user: postmaster@YOUR_DOMAIN.mailgun.org
 password: DOMAIN_PASSWORD
-
+```
 
