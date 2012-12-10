@@ -5,8 +5,49 @@ This sample illustrates how to send smtp emails using a simple Servlet-based Jav
 
 The form on the index.jsp submits the values to a MailServlet, which uses a MailUtility class to actually attempt to send the email. 
 
+Java Mail Code
+--------------
+
+Here is the relevant code snippet from the MailUtility class that shows this is just standard Java Mail and configuring the smtp provider. No special tricks are required.
+```
+        Properties props = new Properties();
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.host", smtpHost);
+        props.put("mail.smtp.auth", "true");
+        
+    	if( smtpPort == 465 )
+    	{
+    		props.put("mail.smtp.socketFactory.port", smtpPort);
+    		props.put("mail.smtp.socketFactory.class",
+    				"javax.net.ssl.SSLSocketFactory");    		
+    	}
+        else props.put("mail.smtp.port", smtpPort);
+
+    	
+        Authenticator auth = new SMTPAuthenticator( smtpAuthUser, smtpAuthPwd );
+        Session mailSession = Session.getInstance(props, auth);
+        
+        // uncomment for debugging infos to stdout
+        mailSession.setDebug(true);
+        Transport transport = mailSession.getTransport();
+
+        MimeMessage message = new MimeMessage(mailSession);
+
+        message.setText(body);
+        message.setFrom(new InternetAddress(from));
+        message.setSubject(subject);
+        message.addRecipient(Message.RecipientType.TO,
+             new InternetAddress(to));
+
+        transport.connect();
+        transport.sendMessage(message,
+            message.getRecipients(Message.RecipientType.TO));
+        transport.close();
+
+```
+
 Configuring the Application
------------------------
+---------------------------
 
 This step is optional because you can use the index.jsp to override the values at runtime. If you want configure the environment variables with valid email provider information, then it is easiest to edit the manifest.yml file and put in the information from your mail provider. 
 

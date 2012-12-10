@@ -56,6 +56,7 @@ public class MailServlet extends HttpServlet {
 			} catch (Exception e) {
 				writer.print( "test email failed" );
 				writer.print(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 		
