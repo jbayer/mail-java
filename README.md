@@ -1,7 +1,7 @@
 Java Send Mail Example
 =================
 
-This sample illustrates how to send smtp emails using a simple Servlet-based Java webapp easily in Cloud Foundry using email providers like SendGrid and MailGun that both have free levels of service that allow you to send up to 200 emails per day and paid plans to do more. The index.jsp of the application presents a form where a user can provide inputs from the mail provider. Note that on Cloud Foundry smtp outbound on port 25 is blocked. But other ports are open, such as the unsecured port 587 or secured port 465.
+This sample illustrates how to send smtp emails using a simple Servlet-based Java webapp easily in Cloud Foundry using email providers like [SendGrid](https://sendgrid.com/user/signup SendGrid) and [MailGun](http://www.mailgun.com/pricing MailGun) that both have free levels of service that allow you to send up to 200 emails per day and paid plans to do more. The index.jsp of the application presents a form where a user can provide inputs from the mail provider. Note that on Cloud Foundry smtp outbound on port 25 is blocked. But other ports are open, such as the unsecured port 587 or secured port 465.
 
 The form on the index.jsp submits the values to a MailServlet, which uses a MailUtility class to actually attempt to send the email. If you configure the environment variables with valid email provider information, then you can invoke the MailServlet without parameters and it will use defaults. Note in this case, you should change the hard-coded values in the To, From, Subject, Body inside of the MailUtility.sendMailWithEnvValues() method.
 
