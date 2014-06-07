@@ -19,4 +19,14 @@
     <servlet-name>MailServlet</servlet-name>
     <url-pattern>/MailServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExitServlet</display-name>
+    <servlet-name>ExitServlet</servlet-name>
+    <servlet-class>org.cloudfoundry.samples.ExitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExitServlet</servlet-name>
+    <url-pattern>/ExitServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
